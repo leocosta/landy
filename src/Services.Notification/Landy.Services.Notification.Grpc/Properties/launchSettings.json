@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Landy.Services.Notification.Grpc": {
+      "commandName": "Project",
+      "applicationUrl": "http://localhost:14000",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

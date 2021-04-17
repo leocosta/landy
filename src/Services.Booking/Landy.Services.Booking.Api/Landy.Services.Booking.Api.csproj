@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Services.Booking' " />
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Landy.Infrastructure\Landy.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Common\Landy.Domain\Landy.Domain.csproj" />
+    <ProjectReference Include="..\Landy.Services.Booking.Core\Landy.Services.Booking.Core.csproj" />
+  </ItemGroup>
+
+</Project>

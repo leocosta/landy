@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option csharp_namespace = "Landy.Services.Notification.Grpc";
+
+package NotificationPackage;
+
+service Email {
+    rpc CreateEmailMessage (CreateEmailMessageRequest) returns (CreateEmailMessageResponse);
+}
+
+message CreateEmailMessageRequest {
+    EmailMessage message = 1;
+}
+
+message CreateEmailMessageResponse {
+    EmailMessage message = 1;
+}
+
+message EmailMessage {
+    string Id = 1;
+    string From = 2;
+    string Tos = 3;
+    string CCs = 4;
+    string BCCs = 5;
+    string Subject = 6;
+    string Body = 7;
+}

@@ -5,9 +5,16 @@
 
 ---
 
+O objetivo do projeto é demonstrar como construir uma solução baseada em microsserviços utilizando as melhores práticas de arquitetura de serviços distribuídos.
+
 # Contexto
 
-O objetivo do projeto é demonstrar como construir uma solução baseada em microsserviços utilizando as melhores práticas de arquitetura de serviços distribuídos.
+**Landy** conecta anfitriões a viajantes do mundo todo. O projeto é baseado em microsserviços e possui as seguintes funções:
+
+- Gestão de Usuários
+- Gestão de Ofertas de Hospedagem
+- Criação de Reservas
+- Envio de Notificação
 
 # Tecnologias
 

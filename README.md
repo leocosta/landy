@@ -9,7 +9,7 @@ O objetivo do projeto é demonstrar como construir uma solução baseada em micr
 
 # Contexto
 
-**Landy** conecta anfitriões a viajantes do mundo todo. O projeto é baseado em microsserviços e possui as seguintes funções:
+**Landy** conecta anfitriões a viajantes pelo mundo todo. O projeto é baseado em microsserviços e possui as seguintes funções:
 
 - Gestão de Usuários
 - Gestão de Ofertas de Hospedagem
@@ -33,6 +33,7 @@ O objetivo do projeto é demonstrar como construir uma solução baseada em micr
 - **Kibana**
 - **Jaeger**
 - **Ocelot**
+- **Docker**
 
 ## Para inciar containers
 
@@ -95,7 +96,6 @@ dotnet ef database update --startup-project ../Landy.Services.Identity.Api --con
 |------|-----------|
 | POST | /book     |
 | GET  | /book/:id |
-| POST | /checkout |
 
 ### Identity
 

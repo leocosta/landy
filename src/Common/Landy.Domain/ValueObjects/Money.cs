@@ -4,23 +4,20 @@ namespace Landy.Domain.ValueObjects
 {
     public class Money : ValueObject
     {
-        public decimal Amount { get; }
-
+        public decimal Value { get; }
         public string Currency { get; }
 
-        private Money()
-        {
-        }
+        private Money() { }
 
-        public Money(decimal amount, string currency)
+        public Money(decimal value, string currency)
         {
-            Amount = amount;
+            Value = value;
             Currency = currency;
         }
 
         protected override IEnumerable<object> GetEqualityComponents()
         {
-            yield return Amount;
+            yield return Value;
             yield return Currency;
         }
     }

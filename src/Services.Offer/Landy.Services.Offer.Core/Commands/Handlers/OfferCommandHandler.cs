@@ -3,6 +3,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Landy.Services.Offer.Core.Events;
+using Landy.Services.Offer.Core.Persistence.Repositories;
+using Landy.Domain.Repositories;
+using FluentValidation;
+using AutoMapper;
+using Landy.Services.Offer.Core.Dtos;
+using Landy.Services.Offer.Core.Commands.Validators;
 
 namespace Landy.Services.Offer.Core.Commands.Handlers
 {
@@ -10,17 +16,35 @@ namespace Landy.Services.Offer.Core.Commands.Handlers
             IRequestHandler<CreateOfferCommand, CreateOfferResult>
     {
         private readonly IMediator mediator;
+        private readonly IMapper mapper;
+        private readonly IUnitOfWork unitOfWork;
+        private readonly IOfferRepository offerRepository;
+        private readonly CreateOfferCommandValidator commandValidator = new CreateOfferCommandValidator();
 
-        public OfferCommandHandler(IMediator mediator) => this.mediator = mediator;
-
-        public async Task<CreateOfferResult> Handle(CreateOfferCommand request, CancellationToken cancellationToken)
+        public OfferCommandHandler(
+            IMediator mediator,
+            IMapper mapper,
+            IUnitOfWork unitOfWork,
+            IOfferRepository offerRepository)
         {
-            System.Console.WriteLine($"{ request.GetType() } handled.");
+            this.mediator = mediator;
+            this.mapper = mapper;
+            this.unitOfWork = unitOfWork;
+            this.offerRepository = offerRepository;
+        }
 
-            var persistedGuid = Guid.NewGuid();
+        public async Task<CreateOfferResult> Handle(CreateOfferCommand command, CancellationToken cancellationToken)
+        {
+            commandValidator.ValidateAndThrow(command);
+
+            var offer = mapper.Map<Entities.Offer>(command.Offer);
+
+            await offerRepository.AddOrUpdateAsync(offer);
+            await unitOfWork.SaveChangesAsync();
+
             var offerCreatedEvent = new OfferCreatedEvent
             {
-                Offer = request.Offer
+                Offer = mapper.Map<OfferDto>(offer)
             };
 
             await mediator.Publish(offerCreatedEvent);

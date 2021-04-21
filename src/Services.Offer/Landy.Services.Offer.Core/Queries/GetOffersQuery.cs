@@ -1,3 +1,4 @@
+using System;
 using MediatR;
 
 namespace src.Services.Offer.Landy.Services.Offer.Core.Queries
@@ -6,7 +7,7 @@ namespace src.Services.Offer.Landy.Services.Offer.Core.Queries
     {
         public int? Skip { get; set; }
         public int? Take { get; set; }
-        public string Inkeeper { get; set; }
+        public Guid HostId { get; set; }
         public string Title { get; set; }
 
         public int GetSkipOrDeafult() => Skip ?? 0;

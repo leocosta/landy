@@ -14,9 +14,9 @@ namespace Landy.Services.Offer.Core.Events.Handlers
 
         public async Task Handle(OfferCreatedEvent notification, CancellationToken cancellationToken)
         {
-            Console.WriteLine($"Indexando oferta... { notification.Offer.OfferId }");
+            Console.WriteLine($"Indexando oferta... { notification.Offer.Id }");
 
-            var response = await elasticClient.UpdateAsync<OfferDto>(notification.Offer.OfferId, u => u
+            var response = await elasticClient.UpdateAsync<OfferDto>(notification.Offer.Id, u => u
                 .DocAsUpsert()
                 .Doc(notification.Offer));
         }

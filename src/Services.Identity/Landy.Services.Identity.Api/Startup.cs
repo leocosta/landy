@@ -30,7 +30,7 @@ namespace Landy.Services.Identity.Api
         {
             services.AddControllers()
                 .AddFluentValidation(options =>
-                    options.RegisterValidatorsFromAssembly(typeof(Core.Commands.CreateUserCommandValidator).Assembly))
+                    options.RegisterValidatorsFromAssemblyContaining<Core.Commands.Validators.CreateUserCommandValidator>())
                 .AddJsonOptions(options =>
                     options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull);
 

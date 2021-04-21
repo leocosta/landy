@@ -10,5 +10,4 @@ namespace Landy.Services.Offer.Core.Dtos
         public string State { get; set; }
         public string Zipcode { get; set; }
     }
-
 }

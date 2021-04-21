@@ -25,4 +25,7 @@
     <ProjectReference Include="..\..\Common\Landy.Infrastructure\Landy.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Common\Landy.Domain\Landy.Domain.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\Validators\" />
+  </ItemGroup>
 </Project>

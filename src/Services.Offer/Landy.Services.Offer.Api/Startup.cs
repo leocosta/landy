@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Landy.Services.Offer.Core.Configuration;
+using FluentValidation.AspNetCore;
 
 namespace Landy.Services.Offer.Api
 {
@@ -20,13 +21,15 @@ namespace Landy.Services.Offer.Api
         }
         public IConfiguration Configuration { get; }
 
-        private AppSettings appSettings;
+        private readonly AppSettings appSettings;
 
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
+                .AddFluentValidation(options =>
+                    options.RegisterValidatorsFromAssemblyContaining<Core.Commands.Validators.CreateOfferCommandValidator>())
                 .AddJsonOptions(options =>
                     options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull);
 

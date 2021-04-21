@@ -11,6 +11,7 @@ using Landy.Services.Identity.Core.Persistence.Repositories;
 using Landy.Services.Notification.Grpc;
 using System;
 using static Landy.Services.Notification.Grpc.Email;
+using Landy.Services.Identity.Core.Commands.Validators;
 
 namespace src.Services.Identity.Landy.Services.Identity.Core.Commands.Handlers
 {

@@ -3,6 +3,8 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="9.5.3" />
+    <PackageReference Include="Automapper" Version="10.1.1" />
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />
@@ -15,5 +17,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Landy.Infrastructure\Landy.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Common\Landy.Domain\Landy.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mappers\" />
+    <Folder Include="Commands\Validators\" />
   </ItemGroup>
 </Project>

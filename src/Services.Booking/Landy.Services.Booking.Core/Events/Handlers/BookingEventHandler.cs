@@ -9,7 +9,6 @@ namespace Landy.Services.Booking.Core.Events.Handlers
     {
         public Task Handle (BookCreatedEvent notification, CancellationToken cancellationToken)
         {
-            // fazer reserva
             Console.WriteLine("Fazendo reserva... ");
             Thread.Sleep(5000);
             Console.WriteLine($"Reserva criada... { notification.Book.BookId  }");

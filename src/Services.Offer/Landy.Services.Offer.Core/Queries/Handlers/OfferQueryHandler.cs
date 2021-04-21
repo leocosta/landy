@@ -12,14 +12,11 @@ namespace Landy.Services.Offer.Core.Queries.Handlers
     {
         private readonly Nest.IElasticClient elasticClient;
 
-        public OfferQueryHandler(Nest.IElasticClient elasticClient)
-        {
-            this.elasticClient = elasticClient;
-        }
+        public OfferQueryHandler(Nest.IElasticClient elasticClient) => this.elasticClient = elasticClient;
 
         public Task<GetOfferResult> Handle(GetOfferQuery request, CancellationToken cancellationToken)
         {
-            var response = this.elasticClient.Get<OfferDto>(request.OfferId);
+            var response = elasticClient.Get<OfferDto>(request.OfferId);
 
             var result = new GetOfferResult
             {
@@ -31,11 +28,11 @@ namespace Landy.Services.Offer.Core.Queries.Handlers
 
         public Task<GetOffersResult> Handle(GetOffersQuery request, CancellationToken cancellationToken)
         {
-            var response = this.elasticClient.Search<OfferDto>(s => s
+            var response = elasticClient.Search<OfferDto>(s => s
                 .From(request.GetSkipOrDeafult())
                 .Size(request.GetTakeOrDeafult())
                 .Query(q => q
-                    .Term(t => t.Innkeeper.Name, request.Inkeeper) || q
+                    .Term(t => t.HostId, request.HostId) || q
                     .Match(mq => mq.Field(f => f.Title).Query(request.Title))
                 )
             );

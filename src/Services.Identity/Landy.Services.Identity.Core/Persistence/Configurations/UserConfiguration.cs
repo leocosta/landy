@@ -21,8 +21,8 @@ namespace Landy.Services.Identity.Core.Persistence.Configurations
                     Id = Guid.Parse("12837D3D-793F-EA11-BECB-5CEA1D05F660"),
                     Name = "Leonardo Costa",
                     Email = "leonardo@growiz.com.br",
-                    PasswordHash = "AQAAAAEAACcQAAAAELBcKuXWkiRQEYAkD/qKs9neac5hxWs3bkegIHpGLtf+zFHuKnuI3lBqkWO9TMmFAQ==", // v*7Un8b4rcN@<-RN
-                },
+                    PasswordHash = "AQAAAAEAACcQAAAAELBcKuXWkiRQEYAkD/qKs9neac5hxWs3bkegIHpGLtf+zFHuKnuI3lBqkWO9TMmFAQ=="
+                }
             });
         }
     }

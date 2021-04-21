@@ -10,6 +10,4 @@ namespace Landy.Services.Offer.Core.Dtos
         public int Height { get; set; }
         public string Format { get; set; }
     }
-
-
 }

@@ -1,9 +1,11 @@
 using System.Reflection;
-using MediatR;
+using AutoMapper;
+using Landy.Domain.Repositories;
 using Landy.Infrastructure.SearchIndexers;
 using Landy.Services.Offer.Core.Configuration;
-using Landy.Domain.Repositories;
+using Landy.Services.Offer.Core.Mappers;
 using Landy.Services.Offer.Core.Persistence.Repositories;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -15,6 +17,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services
                 .AddEFDataAccess(appSettings.ConnectionStrings.Offers)
                 .AddMediatR(Assembly.GetExecutingAssembly())
+                .AddMappers()
                 .AddSearchIndexer(appSettings.SearchIndexer);
 
             return services;
@@ -32,6 +35,20 @@ namespace Microsoft.Extensions.DependencyInjection
             .AddScoped<IUnitOfWork>(provider => provider.GetService<OfferDbContext>())
             .AddScoped(typeof(IRepository<,>), typeof(Repository<,>))
             .AddScoped<IOfferRepository, OfferRepository>();
+
+            return services;
+        }
+
+        private static IServiceCollection AddMappers(this IServiceCollection services)
+        {
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            var mapper = mapperConfig.CreateMapper();
+
+            services.AddSingleton(mapper);
 
             return services;
         }

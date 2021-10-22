@@ -137,5 +137,3 @@ dotnet ef database update --startup-project ../Landy.Services.Identity.Api --con
 
 - Pagar.me
 - SendGrid
-
-> NOTA: Este projeto foi desenvolvido no curso [Jornada do Programador](https://growiz.com.br/jornada-do-programador). O objetivo foi demonstrar algumas técnicas de desenvolvimento e ferramentas disponíveis na plataforma .NET.
